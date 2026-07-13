@@ -1,12 +1,6 @@
 """
 app.py — Flood Prediction AI for the Ganga-Brahmaputra Basin
 IIIT Lucknow StreamFlow Prediction Challenge 2026
-
-Sections:
-  🏠 Home        — Hero + key metrics
-  🔮 Predict     — CSV upload → live inference
-  📊 Explorer    — Interactive charts, feature importance, station KGE
-  🧠 How It Works — Pipeline explainer with animations
 """
 
 import os
@@ -23,6 +17,36 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 
 # ─────────────────────────────────────────────────────────────────────────────
+# AUTO-DOWNLOAD MODELS FROM HF MODEL REPO (runs once on cold start)
+# ─────────────────────────────────────────────────────────────────────────────
+_MODEL_REPO = "HglHs/flood-prediction-models"
+_MODEL_FILES = [
+    "lgb_model.txt", "xgb_model.json",
+    "lgb_station_1.txt", "lgb_station_142.txt", "lgb_station_197.txt",
+    "lgb_station_213.txt", "lgb_station_219.txt", "lgb_station_242.txt",
+    "lgb_station_252.txt", "lgb_station_290.txt", "lgb_station_309.txt",
+    "lgb_station_328.txt",
+]
+
+def _download_models():
+    """Download model files from HF if not present locally (silent, no st calls)."""
+    missing = [f for f in _MODEL_FILES if not os.path.exists(f)]
+    if not missing:
+        return
+    try:
+        from huggingface_hub import hf_hub_download
+        for fname in missing:
+            hf_hub_download(
+                repo_id=_MODEL_REPO,
+                filename=fname,
+                repo_type="model",
+                local_dir=".",
+            )
+    except Exception:
+        pass  # Fall back to demo mode silently
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # PAGE CONFIG — must be first Streamlit call
 # ─────────────────────────────────────────────────────────────────────────────
 st.set_page_config(
@@ -31,6 +55,9 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded",
 )
+
+# Download models AFTER set_page_config (safe to show st.info now)
+_download_models()
 
 # ─────────────────────────────────────────────────────────────────────────────
 # GLOBAL CSS
