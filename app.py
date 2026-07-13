@@ -339,7 +339,7 @@ with st.sidebar:
     <div style='font-size:0.73rem; color:#475569;'>
       <div style='font-weight:600; color:#64748b; margin-bottom:0.4rem;
            text-transform:uppercase; letter-spacing:1px;'>KGE Results</div>
-      <div style='margin-bottom:0.22rem;'>🎯 Val KGE <b style='color:#22c55e; font-size:0.88rem;'>0.999875</b></div>
+      <div style='margin-bottom:0.22rem;'>🎯 Val KGE <b style='color:#22c55e; font-size:0.88rem;'>0.99964</b></div>
       <div style='margin-bottom:0.22rem;'>📈 r &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b style='color:#60a5fa;'>0.9999</b></div>
       <div style='margin-bottom:0.22rem;'>📊 alpha &nbsp; <b style='color:#60a5fa;'>0.9999</b></div>
       <div style='margin-bottom:0.22rem;'>⚖️ beta &nbsp;&nbsp; <b style='color:#60a5fa;'>1.0000</b></div>
