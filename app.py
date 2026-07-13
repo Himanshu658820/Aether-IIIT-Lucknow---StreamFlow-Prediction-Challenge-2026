@@ -373,7 +373,7 @@ with tab_home:
         StreamFlow Prediction Challenge 2026.
       </div>
       <div class='badge-row'>
-        <div class='badge badge-green'>🏆 Val KGE 0.999875</div>
+        <div class='badge badge-green'>🏆 Val KGE 0.99964</div>
         <div class='badge badge-blue'>📡 367 Gauge Stations</div>
         <div class='badge badge-amber'>🌧 Ganga-Brahmaputra Basin</div>
       </div>
@@ -385,7 +385,7 @@ with tab_home:
     with c1:
         st.markdown("""
         <div class='metric-card green'>
-          <div class='metric-value' style='color:#22c55e;'>0.999875</div>
+          <div class='metric-value' style='color:#22c55e;'>0.99964</div>
           <div class='metric-label'>Validation KGE</div>
           <div class='metric-delta delta-pos'>+0.002615 vs baseline</div>
         </div>""", unsafe_allow_html=True)
@@ -905,7 +905,7 @@ with tab_how:
         ("⚗️", "Scipy Blend",
          "SLSQP optimisation, 40 restarts, maximising KGE. Found LGB=1.0, XGB≈0.0 optimal."),
         ("🔩", "Bias Correction",
-         "Per-station scale ∈ [0.5, 2.0] fitted on validation residuals. Final val KGE → 0.999875."),
+         "Per-station scale ∈ [0.5, 2.0] fitted on validation residuals. Final val KGE → 0.99964."),
         ("📈", "Reconstruction",
          "Q_pred = expm₁(log₁ₚ(Q_today) + Δ_pred). Clipped to [0, ∞)."),
     ]
@@ -967,7 +967,7 @@ with tab_how:
     fig_sp = go.Figure()
     fill_rgba = ["rgba(34,197,94,0.08)", "rgba(59,130,246,0.08)", "rgba(148,163,184,0.08)"]
     for (vals, name, color), fill in zip([
-        ([0.9999, 0.9999, 1.0000], "Our Model (0.999875)", "#22c55e"),
+        ([0.9999, 0.9999, 1.0000], "Our Model (0.99964)", "#22c55e"),
         ([0.9992, 0.9997, 0.9998], "Baseline LGB v8 (0.99726)", "#3b82f6"),
         ([0.9979, 1.0000, 0.9999], "Persistence (0.997882)", "#94a3b8"),
     ], fill_rgba):
@@ -1024,5 +1024,5 @@ with tab_how:
     st.markdown("""
 > **Final blend:** Scipy found LGB=1.0, XGB≈0 optimal on validation.  
 > Per-station specialists add +0.000007 overall but significantly improve the 10 hardest stations.  
-> Final val KGE after bias correction: **0.999875**
+> Final val KGE after bias correction: **0.99964**
 """)
