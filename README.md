@@ -1,5 +1,5 @@
 ---
-title: Flood StreamFlow Prediction v9
+title: Flood Prediction AI - Ganga-Brahmaputra Basin
 emoji: 🌊
 colorFrom: blue
 colorTo: indigo
